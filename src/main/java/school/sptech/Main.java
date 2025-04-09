@@ -13,11 +13,11 @@ import java.io.InputStream;
 import org.apache.poi.util.IOUtils;
 
     public static void main(String[] args) throws Exception{
+        IOUtils.setByteArrayMaxOverride(1_000_000_000);
+
         OPCPackage arquivo = OPCPackage.open("vai-explodir.xlsx");
 
         XSSFReader leitor = new XSSFReader(arquivo);
-
-        IOUtils.setByteArrayMaxOverride(1_000_000_000);
 
         ReadOnlySharedStringsTable texto = new ReadOnlySharedStringsTable(arquivo);
 
